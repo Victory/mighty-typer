@@ -11,8 +11,32 @@ var bark = function (msg) {
   var $mainTextarea; // where the string is stored
 
   var insertAtCaret = function (evt, newKey) {
+    var target = evt.target;
+    var caretPos = target.selectionStart;
+    
     var oldVal = $mainTextarea.val();
-    $mainTextarea.val(oldVal + newKey);
+    var newVal = oldVal.substring(0, caretPos) +
+      newKey +
+      oldVal.substring(caretPos);
+    $mainTextarea.val(newVal);
+
+    // nothing special, inserting at the end of textarea
+    if (caretPos === oldVal.length) {
+      return;
+    };
+
+    // move the caret after the newValue
+    caretPos += 1;
+    if (target.createTextRange) {
+      range = target.createTextRange();
+      range.move('character', caretPos);
+      range.select();
+    } else {
+      target.focus();
+      if (typeof target.selectionStart !== "undefined") {
+        target.setSelectionRange(caretPos, caretPos);
+      }
+    }
   };
 
   var tt = function (evt) {
