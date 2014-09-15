@@ -50,7 +50,6 @@ var bark = function (msg) {
     }
 
     evt.preventDefault();
-    console.log(evt.shiftKey);
     if (evt.shiftKey) {
       newKey = newKey.toUpperCase();
     }
