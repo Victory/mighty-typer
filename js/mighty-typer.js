@@ -48,7 +48,12 @@ var bark = function (msg) {
     if (typeof newKey === "undefined") {
       return;
     }
+
     evt.preventDefault();
+    console.log(evt.shiftKey);
+    if (evt.shiftKey) {
+      newKey = newKey.toUpperCase();
+    }
     insertAtCaret(evt, newKey);
   };
   
