@@ -1,5 +1,6 @@
 jQuery(function ($) {
-  var dict = ["доброе утро", "хороший чай"];
+  var dict = ["доброе утро", "хороший чай", "может у меня есть", 
+              "вы можете иметь", "весна лето осень зима"];
 
   function randomWord () {
     var choice = Math.floor(Math.random() * dict.length);
