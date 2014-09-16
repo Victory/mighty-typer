@@ -34,6 +34,24 @@ jQuery(function ($) {
     return $highlights;
   };
 
+  function setWordProgress($highlights, expected) {
+    $wordProgress = $("#wordProgress");
+    var progress = "";
+    var numCorrect = $(".matchedChar", $highlights).length;
+    var numExpected = expected.length;
+    progress += numCorrect;
+    progress += "/";
+    progress += numExpected;
+    
+    $wordProgress.text(progress);
+
+    if (numExpected == numCorrect) {
+      $wordProgress.addClass('matchedChar');
+    } else {
+      $wordProgress.removeClass('matchedChar');
+    }
+  };
+
   (function () {
     var curWord = randomWord();
     var $matched = $("#matched");
@@ -42,10 +60,11 @@ jQuery(function ($) {
     $matched.html(curWord);
     
     $mainInput.keyup(function () {
-      actual = $mainInput.val();
-      highlights = highlightMatched(curWord, actual);
+      var actual = $mainInput.val();
+      var $highlights = highlightMatched(curWord, actual);
       $matched.html('');
-      $matched.append(highlights);
+      $matched.append($highlights);
+      setWordProgress($highlights, curWord);
     });
 
   }());
