@@ -48,6 +48,10 @@ jQuery(function ($) {
 
     if (numExpected == numCorrect) {
       $wordProgress.addClass('matchedChar');
+
+      setTimeout(function () {
+        document.location = document.location;
+      }, 1500);
     } else {
       $wordProgress.removeClass('matchedChar');
     }
