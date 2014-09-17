@@ -1,10 +1,34 @@
 jQuery(function ($) {
+  
   var dict = ["доброе утро", "хороший чай", "может у меня есть", 
               "вы можете иметь", "весна лето осень зима"];
+
+  var curWord = randomWord();
+
+  var $matched = $("#matched");
+  var $mainInput = $("#mainInput");
+  var $mainFeedback = $("#mainFeedback");
+
+  $matched.html(curWord);
 
   function randomWord () {
     var choice = Math.floor(Math.random() * dict.length);
     return dict[choice];
+  };
+
+   
+
+  function giveReward () {
+    $mainFeedback.text("очень хорошо!");
+    
+    var loadNewWord = function () {
+      curWord = randomWord();
+      $mainInput.val('');
+      $matched.html(curWord);
+      $mainFeedback.text('');
+    }
+
+    setTimeout(loadNewWord, 1000);
   };
 
   function highlightMatched(expected, actual) {
@@ -48,21 +72,14 @@ jQuery(function ($) {
 
     if (numExpected == numCorrect) {
       $wordProgress.addClass('matchedChar');
-
-      setTimeout(function () {
-        document.location = document.location;
-      }, 1500);
+      giveReward(curWord);
     } else {
       $wordProgress.removeClass('matchedChar');
     }
   };
 
+
   (function () {
-    var curWord = randomWord();
-    var $matched = $("#matched");
-    var $mainInput = $("#mainInput");
-    
-    $matched.html(curWord);
     
     $mainInput.keyup(function () {
       var actual = $mainInput.val();
