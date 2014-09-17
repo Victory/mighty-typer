@@ -13,3 +13,12 @@ textarea#mainInput {
 .missedChar {
   color: red;
 }
+
+span.key {
+  display: inline-block;
+  border: 1px solid #333;
+  background: #eee;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 3px;
+}
