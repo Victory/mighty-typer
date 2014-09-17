@@ -1,14 +1,14 @@
 jQuery(function ($) {
   
   var dict = ["доброе утро", "хороший чай", "может у меня есть", 
-              "вы можете иметь", "весна лето осень зима"];
+              "вы можете иметь", "весна лето осень зима", "шторм"];
 
   var curWord = randomWord();
 
   var $matched = $("#matched");
   var $mainInput = $("#mainInput");
   var $mainFeedback = $("#mainFeedback");
-
+  var $wordProgress = $("#wordProgress");
   $matched.html(curWord);
 
   function randomWord () {
@@ -26,6 +26,7 @@ jQuery(function ($) {
       $mainInput.val('');
       $matched.html(curWord);
       $mainFeedback.text('');
+      $wordProgress.text('');
     }
 
     setTimeout(loadNewWord, 1000);
@@ -60,7 +61,7 @@ jQuery(function ($) {
   };
 
   function setWordProgress($highlights, expected) {
-    $wordProgress = $("#wordProgress");
+
     var progress = "";
     var numCorrect = $(".matchedChar", $highlights).length;
     var numExpected = expected.length;
