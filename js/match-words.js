@@ -15,20 +15,33 @@ jQuery(function ($) {
     var choice = Math.floor(Math.random() * dict.length);
     return dict[choice];
   };
-
    
+  function removeCurWord () {
+    for (var ii=0; ii < dict.length; ii++) {
+      if (dict[ii] === curWord) {
+        dict.splice(ii, 1);
+        return;
+      }
+    }
+  };
 
   function giveReward () {
     $mainFeedback.text("очень хорошо!");
-    
+    removeCurWord();
+
     var loadNewWord = function () {
+
+      if (dict.length == 0) {
+        alert("all done");
+        return;
+      }
+
       curWord = randomWord();
       $mainInput.val('');
       $matched.html(curWord);
       $mainFeedback.text('');
       $wordProgress.text('');
     }
-
     setTimeout(loadNewWord, 1000);
   };
 
