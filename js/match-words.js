@@ -3,6 +3,27 @@ jQuery(function ($) {
   var dict = ["доброе утро", "хороший чай", "может у меня есть", 
               "вы можете иметь", "весна лето осень зима", "шторм"];
 
+  var dict = [
+    "понедельник",
+    "вторник",
+    "среда",
+    "четверг",
+    "пятница",
+    "суббота",
+    "воскресенье"
+  ];
+
+  var dictOriginal = dict;
+  var trans = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thrusday",
+    "friday",
+    "saturday",
+    "sunday",
+  ];
+
   var curWord = randomWord();
 
   var $matched = $("#matched");
@@ -25,12 +46,20 @@ jQuery(function ($) {
     }
   };
 
+  function transCurWord() {
+    for (var ii=0; ii < dictOriginal.length; ii++) {
+      if (dictOriginal[ii] === curWord) {
+        return trans[ii];
+      }
+    }
+  };
+
   function giveReward () {
     $mainFeedback.text("очень хорошо!");
+    $("#trans").text(transCurWord());
+
     removeCurWord();
-
     var loadNewWord = function () {
-
       if (dict.length == 0) {
         alert("all done");
         return;
@@ -41,6 +70,7 @@ jQuery(function ($) {
       $matched.html(curWord);
       $mainFeedback.text('');
       $wordProgress.text('');
+      $("#trans").text('');
     }
     setTimeout(loadNewWord, 1000);
   };
