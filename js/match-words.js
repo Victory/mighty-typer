@@ -3,27 +3,7 @@ jQuery(function ($) {
   var dict = ["доброе утро", "хороший чай", "может у меня есть", 
               "вы можете иметь", "весна лето осень зима", "шторм"];
 
-  var dict = [
-    "понедельник",
-    "вторник",
-    "среда",
-    "четверг",
-    "пятница",
-    "суббота",
-    "воскресенье"
-  ];
-
   var dictOriginal = dict;
-  var trans = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thrusday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
-
   var curWord = randomWord();
 
   var $matched = $("#matched");
