@@ -10,6 +10,9 @@ jQuery(function ($) {
   var $mainInput = $("#mainInput");
   var $mainFeedback = $("#mainFeedback");
   var $wordProgress = $("#wordProgress");
+
+  var $trans = $("#trans");
+
   $matched.html(curWord);
 
   function randomWord () {
@@ -36,7 +39,7 @@ jQuery(function ($) {
 
   function giveReward () {
     $mainFeedback.text("очень хорошо!");
-    $("#trans").text(transCurWord());
+    $trans.text(transCurWord());
 
     removeCurWord();
     var loadNewWord = function () {
@@ -50,7 +53,7 @@ jQuery(function ($) {
       $matched.html(curWord);
       $mainFeedback.text('');
       $wordProgress.text('');
-      $("#trans").text('');
+      $trans.text('');
     }
     setTimeout(loadNewWord, 1000);
   };
