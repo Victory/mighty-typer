@@ -15,6 +15,11 @@ jQuery(function ($) {
 
   $matched.html(curWord);
 
+  $("#showKb").click(function (evt) {
+    $("#kb").show();
+    $(this).hide();
+  });
+
   function randomWord () {
     var choice = Math.floor(Math.random() * dict.length);
     return dict[choice];
