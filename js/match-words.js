@@ -1,8 +1,4 @@
 jQuery(function ($) {
-  
-  var dict = ["доброе утро", "хороший чай", "может у меня есть", 
-              "вы можете иметь", "весна лето осень зима", "шторм"];
-
   var dictOriginal = dict;
   var curWord = randomWord();
 
