@@ -1,12 +1,14 @@
 var dict = [];
 var trans = [];
 jQuery(function ($) {
+
+  var lesson = "daysOfTheWeek"
   $.get(
-    "/resources/ru/courses/daysOfTheWeek.json",
+    "/resources/ru/courses/" + lesson + ".json",
     function (fData) {
       dict = fData;
       $.get(
-        "/resources/us/courses/daysOfTheWeek.json",
+        "/resources/us/courses/" + lesson + ".json",
         function (lData) {
           trans = lData;
           var $script = $("<script>");
