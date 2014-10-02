@@ -5,6 +5,7 @@ var bark = function (msg) {
 
 (function () {
 
+  var $keyboard = null;
   var whichToChar = {};
   var keymap; // keymap json is loaded from ajax
   var ordinalKeymap; // keymap json is loaded from ajax
@@ -54,6 +55,13 @@ var bark = function (msg) {
       newKey = newKey.toUpperCase();
     }
     insertAtCaret(evt, newKey);
+    if ($keyboard !== null) {
+      var $span = $("span:contains(" + newKey + ")", $keyboard);
+      $span.css('color', 'red');
+      setTimeout(function () {
+        $span.css('color', 'black');
+      }, 300);
+    }
   };
   
   var getKeymap = function (url) {
@@ -93,6 +101,10 @@ var bark = function (msg) {
     var whichToCharXhr = getCharToWhich("/resources/us/charToOrdinal.json");
     whichToCharXhr.always(function () {
       var keymapXhr = getKeymap("/resources/ru/russian.json");
+    });
+
+    $("iframe:first").on('load', function () {
+      $keyboard = $(this).contents().find("#keyboard:first");
     });
   });
 }());
