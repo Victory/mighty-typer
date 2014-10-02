@@ -92,7 +92,7 @@ var bark = function (msg) {
 
     var whichToCharXhr = getCharToWhich("/resources/us/charToOrdinal.json");
     whichToCharXhr.always(function () {
-      var keymapXhr = getKeymap("/resources/ru/aatseel.json");
+      var keymapXhr = getKeymap("/resources/ru/russian.json");
     });
   });
 }());
