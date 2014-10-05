@@ -2,7 +2,7 @@ var dict = [];
 var trans = [];
 jQuery(function ($) {
 
-  var lesson = "daysOfTheWeek"
+  var lesson = "greetings"
   $.get(
     "/resources/ru/courses/" + lesson + ".json",
     function (fData) {
